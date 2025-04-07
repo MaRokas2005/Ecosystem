@@ -1,5 +1,6 @@
 package animal;
 
+import exceptions.InvalidAttackException;
 import org.jetbrains.annotations.NotNull;
 import java.util.UUID;
 
@@ -23,13 +24,17 @@ public class Wolf extends Animal {
         return rabbitsEaten;
     }
     public void setName(String name) {super.setName("Wolf " + name);}
-    public boolean attack(@NotNull Rabbit rabbit) {
-        if (rabbit.isAlive() && !rabbit.isRunning()) {
-            rabbit.kill();
-            rabbitsEaten++;
-            return true;
+    public boolean attack(@NotNull Rabbit rabbit) throws InvalidAttackException {
+        if (!rabbit.isAlive()) {
+            throw new InvalidAttackException("Cannot attack: Rabbit is already dead. Name=" + rabbit.getName());
         }
-        return false;
+        if (rabbit.isRunning()) {
+            throw new InvalidAttackException("Cannot attack: Rabbit is running away. Name=" + rabbit.getName());
+        }
+
+        rabbit.kill();
+        rabbitsEaten++;
+        return true;
     }
     public String toString() {
         return getClass().getName() + "@(base: " + super.toString() + ", rabbits eaten=" + rabbitsEaten + ")";

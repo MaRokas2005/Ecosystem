@@ -1,5 +1,6 @@
 package animal;
 
+import exceptions.AnimalException;
 import interfaces.Movable;
 
 public abstract class Animal implements Movable {
@@ -55,7 +56,8 @@ public abstract class Animal implements Movable {
         x += dx;
         y += dy;
     }
-    public final void move(int distance, double degrees) {
+    public final void move(int distance, double degrees) throws AnimalException {
+        if (distance < 0) throw new AnimalException("Invalid distance. Less than zero. Given distance = " + distance + ". Name = " + name);
         x += (int) (Math.cos(Math.toRadians(degrees)) * distance);
         y += (int) (Math.sin(Math.toRadians(degrees)) * distance);
     }
