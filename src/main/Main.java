@@ -1,14 +1,13 @@
 package main;
 import animal.*;
-import exceptions.AnimalException;
+import exceptions.EcosystemException;
 import exceptions.InvalidAttackException;
-import interfaces.Movable;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) throws AnimalException {
+    public static void main(String[] args) {
         Rabbit rab1 = new Rabbit(0, 5, .5, "trušis 1");
         Rabbit rab2 = new Rabbit(2, 9, .7, "trušis 2");
         Wolf wolf1 = new Wolf(9, 5, 1.4);
@@ -34,12 +33,22 @@ public class Main {
             System.out.println("Unknown exception: " + e.getMessage());
         }
 
+        Wolf wolf3 = new Wolf(3, 5, 1.4);
+        Rabbit rab3 = new Rabbit(220, 165, 0.8);
+        try {
+            wolf3.attack(rab3);
+        } catch (InvalidAttackException e) {
+            System.out.println("InvalidAttackException: " + e.getMessage() + " distance = " + e.getDistance());
+        } catch (Exception e){
+            System.out.println("Unknown exception: " + e.getMessage());
+        }
+
         try {
             for(Animal animal : animals) {
                 animal.move((int)((Math.random()-.5)*100), 5d);
             }
-        } catch (AnimalException e) {
-            System.out.println("AnimalException: " + e.getMessage());
+        } catch (EcosystemException e) {
+            System.out.println("EcosystemException: " + e.getMessage());
         } catch(Exception e){
             System.out.println("Unknown exception: " + e.getMessage());
         }

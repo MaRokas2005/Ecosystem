@@ -26,10 +26,13 @@ public class Wolf extends Animal {
     public void setName(String name) {super.setName("Wolf " + name);}
     public boolean attack(@NotNull Rabbit rabbit) throws InvalidAttackException {
         if (!rabbit.isAlive()) {
-            throw new InvalidAttackException("Cannot attack: Rabbit is already dead. Name=" + rabbit.getName());
+            throw new InvalidAttackException("Cannot attack: Rabbit is already dead.", this, rabbit);
         }
         if (rabbit.isRunning()) {
-            throw new InvalidAttackException("Cannot attack: Rabbit is running away. Name=" + rabbit.getName());
+            throw new InvalidAttackException("Cannot attack: Rabbit is running away.", this, rabbit);
+        }
+        if(Math.sqrt((int)Math.pow(rabbit.getX() - getX(), 2) + Math.pow(rabbit.getY() - getY(), 2)) > getSpeed()) {
+            throw new InvalidAttackException("Cannot attack: distance between Rabbit and Wolf is too big.", this, rabbit);
         }
 
         rabbit.kill();
