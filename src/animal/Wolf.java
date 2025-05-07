@@ -24,7 +24,7 @@ public class Wolf extends Animal {
         return rabbitsEaten;
     }
     public void setName(String name) {super.setName("Wolf " + name);}
-    public boolean attack(@NotNull Rabbit rabbit) throws InvalidAttackException {
+    public void attack(@NotNull Rabbit rabbit) throws InvalidAttackException {
         if (!rabbit.isAlive()) {
             throw new InvalidAttackException("Cannot attack: Rabbit is already dead.", this, rabbit);
         }
@@ -37,9 +37,11 @@ public class Wolf extends Animal {
 
         rabbit.kill();
         rabbitsEaten++;
-        return true;
     }
     public String toString() {
-        return getClass().getName() + "@(base: " + super.toString() + ", rabbits eaten=" + rabbitsEaten + ")";
+        return getClass().getName() + "@(base: " + super.toString() + ", rabbitsEaten=" + rabbitsEaten + ")";
+    }
+    public Wolf clone() {
+        return (Wolf) super.clone();
     }
 }

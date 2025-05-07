@@ -27,6 +27,9 @@ public class Rabbit extends Animal {
         return isRunning;
     }
     public String toString() {
-        return getClass().getName() + "@(base: " + super.toString() + ", is running=" + isRunning + ")";
+        return getClass().getName() + "@(base: " + super.toString() + ", isRunning=" + isRunning + ")";
+    }
+    public Rabbit clone() {
+        return (Rabbit) super.clone();
     }
 }

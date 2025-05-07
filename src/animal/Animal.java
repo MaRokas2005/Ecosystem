@@ -3,7 +3,9 @@ package animal;
 import exceptions.EcosystemException;
 import interfaces.Movable;
 
-public abstract class Animal implements Movable {
+import java.io.Serializable;
+
+public abstract class Animal implements Movable, Cloneable, Serializable {
     private int x;
     private int y;
     private String name;
@@ -67,5 +69,13 @@ public abstract class Animal implements Movable {
     public String toString() {
         return "(name=" + name + ", x=" + x + ", y=" + y + ", speed=" + getSpeed()
                 + ", isAlive=" + isAlive + ", quantity=" + quantity + ")";
+    }
+    public Animal clone() {
+        try {
+            quantity++;
+            return (Animal) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

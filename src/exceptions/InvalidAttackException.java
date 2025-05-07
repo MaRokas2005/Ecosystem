@@ -16,5 +16,7 @@ public class InvalidAttackException extends EcosystemException {
     }
     public Wolf getWolf() { return wolf; }
     public Rabbit getRabbit() { return rabbit; }
-    public int getDistance() { return (int)Math.sqrt((int)Math.pow(rabbit.getX() - wolf.getX(), 2) + (int)Math.pow(rabbit.getY() - wolf.getY(), 2)); }
+    public int getDistance() {
+        return (int)Math.sqrt((int)Math.pow(rabbit.getX() - wolf.getX(), 2) + (int)Math.pow(rabbit.getY() - wolf.getY(), 2));
+    }
 }
