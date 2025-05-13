@@ -18,6 +18,7 @@ public class AnimalApp {
         frame.add(simulationPanel, BorderLayout.CENTER);
         frame.add(buttonPanel, BorderLayout.SOUTH);
         frame.setVisible(true);
+        //SwingUtilities.invokeLater(simulationPanel::startSimulation);
     }
 
     private JPanel getJPanel() {
@@ -27,10 +28,10 @@ public class AnimalApp {
         JButton saveButton = new JButton("Save");
         JButton loadButton = new JButton("Load");
 
-        addWolf.addActionListener(_ -> SwingUtilities.invokeLater(simulationPanel.addWolf()));
-        addRabbit.addActionListener(_ -> SwingUtilities.invokeLater(simulationPanel.addRabbit()));
-        saveButton.addActionListener(_ -> SwingUtilities.invokeLater(simulationPanel.saveAnimals()));
-        loadButton.addActionListener(_ -> SwingUtilities.invokeLater(simulationPanel.loadAnimals()));
+        addWolf.addActionListener(_ -> simulationPanel.addWolf());
+        addRabbit.addActionListener(_ -> simulationPanel.addRabbit());
+        saveButton.addActionListener(_ -> simulationPanel.saveAnimals());
+        loadButton.addActionListener(_ -> simulationPanel.loadAnimals());
 
         buttonPanel.add(addRabbit);
         buttonPanel.add(addWolf);
