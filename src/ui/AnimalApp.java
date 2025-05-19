@@ -3,9 +3,25 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Main application window for the Ecosystem Simulator.
+ * <p>
+ * Sets up the JFrame containing the simulation panel and control buttons.
+ * </p>
+ *
+ * <p>
+ * Provides buttons to add rabbits and wolves, and to save/load the simulation state.
+ * </p>
+ *
+ * @author Rokas Braidokas
+ */
 public class AnimalApp {
+
     private final SimulationPanel simulationPanel = new SimulationPanel();
 
+    /**
+     * Constructs the main application window, initializing the UI components.
+     */
     public AnimalApp() {
         JFrame frame = new JFrame("Ecosystem Simulator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,6 +37,14 @@ public class AnimalApp {
         //SwingUtilities.invokeLater(simulationPanel::startSimulation);
     }
 
+    /**
+     * Creates the panel containing control buttons.
+     * <p>
+     * Buttons include adding rabbits, adding wolves, saving, and loading simulation state.
+     * </p>
+     *
+     * @return a JPanel with the control buttons
+     */
     private JPanel getJPanel() {
         JPanel buttonPanel = new JPanel();
         JButton addRabbit = new JButton("Add Rabbit");
