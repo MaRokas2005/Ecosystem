@@ -1,5 +1,3 @@
-package ui;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,7 +8,8 @@ import java.awt.*;
  *
  * @author Rokas Braidokas
  */
-public class SuccessFrame {
+public final class SuccessFrame {
+    private SuccessFrame() {}
     /**
      * Displays a success message dialog with the specified title and message,
      * centered relative to the given parent component.

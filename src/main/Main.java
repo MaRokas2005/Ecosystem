@@ -12,8 +12,8 @@ import javax.swing.*;
  *
  * @author Rokas Braidokas
  */
-public class Main {
-
+public final class Main {
+    private Main() {}
     /**
      * The main method that starts the application.
      *

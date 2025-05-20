@@ -12,7 +12,13 @@ import animal.*;
  * @author Rokas Braidokas
  */
 public class WolfFactory implements AnimalFactory {
-
+    /**
+     * Constructs a new {@code WolfFactory}.
+     * <p>
+     * This constructor is public to allow instantiation of the factory
+     * for creating {@link Wolf} objects.
+     */
+    public WolfFactory() {}
     /**
      * Creates a new {@link Wolf} instance at position (0, 0)
      * with a speed multiplier of 1.2.

@@ -11,8 +11,8 @@ import java.awt.*;
  *
  * @author Rokas Braidokas
  */
-public class ErrorFrame {
-
+public final class ErrorFrame {
+    private ErrorFrame() {}
     /**
      * Shows an error message dialog with the specified title and error message.
      *

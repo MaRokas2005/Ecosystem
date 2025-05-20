@@ -11,8 +11,14 @@ import animal.*;
  *
  * @author Rokas Braidokas
  */
-public class RabbitFactory implements AnimalFactory {
-
+public final class RabbitFactory implements AnimalFactory {
+    /**
+     * Constructs a new {@code RabbitFactory}.
+     * <p>
+     * This constructor is public to allow instantiation of the factory
+     * for creating {@link Rabbit} objects.
+     */
+    public RabbitFactory() {}
     /**
      * Creates a new {@link Rabbit} instance at position (0, 0)
      * with a speed multiplier of 0.8.

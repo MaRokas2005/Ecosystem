@@ -22,6 +22,11 @@ public abstract class Animal implements Movable, Cloneable, Serializable {
     private boolean isAlive;
     private static int quantity = 0;
     private static final int speed = 100;
+    /**
+     * Multiplier applied to the base speed of an animal to adjust its movement rate.
+     * A value greater than 1.0 increases the speed, while a value less than 1.0 decreases it.
+     * Default is 1.0
+     */
     protected final double speedMultiplier;
 
     /**

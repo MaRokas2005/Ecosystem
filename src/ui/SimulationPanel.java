@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class SimulationPanel extends JPanel implements MouseListener {
 
-    private final Integer COOLDOWN_TIME = 3 * 60;
+    private final Integer COOLDOWN_TIME = (Integer) (3 * 60);
     private final ImageIcon rabbitIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/rabbit.png")));
     private final ImageIcon wolfIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/wolf.png")));
     private final List<Animal> animals = new ArrayList<>();
@@ -76,7 +76,7 @@ public class SimulationPanel extends JPanel implements MouseListener {
             if (animal instanceof Rabbit rabbit && rabbit.isAlive() && !rabbit.isRunning()) {
                 if (cooldown.containsKey(rabbit)) {
                     if (cooldown.get(rabbit) > 0) {
-                        cooldown.replace(rabbit, cooldown.get(rabbit) - 1);
+                        cooldown.replace(rabbit, Integer.valueOf(cooldown.get(rabbit) - 1));
                         continue;
                     }
                     cooldown.remove(rabbit);
@@ -105,7 +105,7 @@ public class SimulationPanel extends JPanel implements MouseListener {
             int dy = (int) point.getY() - rabbit.getY();
             double dist = Math.hypot(dx, dy);
             if (dist < 5) {
-                cooldown.put(rabbit, rand.nextInt(COOLDOWN_TIME / 2, COOLDOWN_TIME));
+                cooldown.put(rabbit, Integer.valueOf(rand.nextInt(COOLDOWN_TIME / 2, COOLDOWN_TIME)));
                 rabbit.stop();
                 it.remove();
                 continue;
